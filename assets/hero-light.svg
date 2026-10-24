@@ -1,39 +1,56 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="460" viewBox="0 0 1200 460" role="img" aria-label="aryan rao — product engineer. i ship the whole thing.">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-label="Aryan Rao — i ship the whole thing.">
   <defs>
-    <pattern id="grid-light" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#D6D3CD"/></pattern>
-    <radialGradient id="fade-light" cx="78%" cy="45%" r="62%"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/></radialGradient>
-    <mask id="m-light"><rect width="1200" height="460" fill="url(#fade-light)"/></mask>
-    <linearGradient id="stroke-light" x1="660" x2="1120" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0A0A0A" stop-opacity=".15"/><stop offset=".7" stop-color="#0A0A0A" stop-opacity=".7"/><stop offset="1" stop-color="#F04A10"/></linearGradient>
-    <linearGradient id="area-light" x1="0" x2="0" y1="140" y2="330" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#F04A10" stop-opacity=".16"/><stop offset="1" stop-color="#F04A10" stop-opacity="0"/></linearGradient>
-    <clipPath id="card-light"><rect width="1200" height="460" rx="20"/></clipPath>
+    <filter id="blur-light" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="70"/></filter>
+    <filter id="grain-light"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .08 0"/></filter>
+    <clipPath id="card-light"><rect width="1200" height="520" rx="24"/></clipPath>
   </defs>
   <style>
-    .tag { font: 500 12px ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: 2px; fill: #6B6B67; }
-    .name { font: 600 92px -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: -2.6px; fill: #0A0A0A; }
-    .line { font: 400 22px -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: -0.3px; fill: #6B6B67; }
-    .k { font: 400 11.5px ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: 1px; fill: #6B6B67; }
-    .v { font: 500 15px -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif; fill: #0A0A0A; }
-    .axis { font: 400 11px ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: 1px; fill: #6B6B67; }
+    .name { font: 650 104px -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: -4px; fill: #0A0A0A; }
+    .typed { font: 400 20px ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace; fill: #6B6B67; }
+    .pill { font: 500 13px ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .4px; fill: #0A0A0A; }
+    .foot { font: 500 11px ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: 2.4px; fill: #6B6B67; }
+    .a { transform-box: fill-box; transform-origin: center; }
+    .a1 { animation: d1 19s ease-in-out infinite alternate; }
+    .a2 { animation: d2 23s ease-in-out infinite alternate; }
+    .a3 { animation: d3 29s ease-in-out infinite alternate; }
+    @keyframes d1 { to { transform: translate(220px, 60px) scale(1.2) } }
+    @keyframes d2 { to { transform: translate(-240px, -40px) scale(.85) } }
+    @keyframes d3 { to { transform: translate(120px, -80px) scale(1.15) } }
+    .phrase { opacity: 0; animation: show 12s infinite; }
+    .p0 { opacity: 1; }
+    .type { transform-box: fill-box; transform-origin: left; animation-duration: 12s; animation-iteration-count: infinite; }
+    .t0 { animation-name: type0 } @keyframes type0 { 0% { transform: scaleX(0); animation-timing-function: steps(23) } 12%, 100% { transform: scaleX(1) } }
+    .t1 { animation-name: type1 } @keyframes type1 { 0% { transform: scaleX(0); animation-timing-function: steps(32) } 12%, 100% { transform: scaleX(1) } }
+    .t2 { animation-name: type2 } @keyframes type2 { 0% { transform: scaleX(0); animation-timing-function: steps(17) } 12%, 100% { transform: scaleX(1) } }
+    .p1, .t1 { animation-delay: 4s } .p2, .t2 { animation-delay: 8s }
+    @keyframes show { 0%, 30% { opacity: 1 } 33%, 100% { opacity: 0 } }
     .ping { transform-box: fill-box; transform-origin: center; animation: ping 2.4s cubic-bezier(0, 0, .2, 1) infinite; }
-    @keyframes ping { 0% { transform: scale(1); opacity: .8 } 80%, 100% { transform: scale(3.2); opacity: 0 } }
-    @media (prefers-reduced-motion: reduce) { .ping { animation: none } .ping { opacity: 0 } }
+    @keyframes ping { 0% { transform: scale(1); opacity: .8 } 80%, 100% { transform: scale(3); opacity: 0 } }
+    @media (prefers-reduced-motion: reduce) {
+      .a1, .a2, .a3, .ping, .phrase, .type { animation: none }
+      .p1, .p2, .ping { opacity: 0 }
+    }
   </style>
   <g clip-path="url(#card-light)">
-    <rect width="1200" height="460" fill="#FFFFFF"/>
-    <rect width="1200" height="460" fill="url(#grid-light)" mask="url(#m-light)"/>
-    <path d="M 660.0 237.8 C 661.5 246.6, 665.9 276.4, 668.8 290.5 C 671.8 304.5, 674.7 315.5, 677.7 322.1 C 680.6 328.7, 683.6 328.7, 686.5 330.0 C 689.5 330.0, 692.4 330.0, 695.4 330.0 C 698.3 329.1, 701.3 328.1, 704.2 324.4 C 707.2 320.7, 710.1 312.9, 713.1 307.6 C 716.0 302.4, 719.0 294.4, 721.9 292.7 C 724.9 291.1, 727.8 299.1, 730.8 298.0 C 733.7 296.8, 736.7 291.1, 739.6 285.7 C 742.6 280.3, 745.5 266.1, 748.5 265.5 C 751.4 264.8, 754.4 278.9, 757.3 281.6 C 760.3 284.3, 763.2 284.3, 766.2 281.6 C 769.1 278.9, 772.1 263.8, 775.0 265.5 C 777.9 267.1, 780.9 282.1, 783.8 291.3 C 786.8 300.4, 789.7 313.9, 792.7 320.3 C 795.6 326.8, 798.6 328.4, 801.5 330.0 C 804.5 330.0, 807.4 330.0, 810.4 330.0 C 813.3 330.0, 816.3 330.0, 819.2 330.0 C 822.2 329.1, 825.1 328.1, 828.1 324.4 C 831.0 320.7, 834.0 312.9, 836.9 307.6 C 839.9 302.4, 842.8 292.7, 845.8 292.7 C 848.7 292.7, 851.7 302.4, 854.6 307.6 C 857.6 312.9, 860.5 320.7, 863.5 324.4 C 866.4 328.1, 869.4 329.1, 872.3 330.0 C 875.3 330.0, 878.2 330.0, 881.2 330.0 C 884.1 330.0, 887.1 330.0, 890.0 330.0 C 892.9 330.0, 895.9 330.0, 898.8 330.0 C 901.8 330.0, 904.7 330.0, 907.7 330.0 C 910.6 330.0, 913.6 330.0, 916.5 330.0 C 919.5 330.0, 922.4 330.0, 925.4 330.0 C 928.3 330.0, 931.3 330.0, 934.2 330.0 C 937.2 330.0, 940.1 330.0, 943.1 330.0 C 946.0 330.0, 949.0 330.0, 951.9 330.0 C 954.9 330.0, 957.8 330.0, 960.8 330.0 C 963.7 330.0, 966.7 330.0, 969.6 330.0 C 972.6 330.0, 975.5 330.0, 978.5 330.0 C 981.4 330.0, 984.4 330.0, 987.3 330.0 C 990.3 325.3, 993.2 320.5, 996.2 301.5 C 999.1 282.5, 1002.1 242.9, 1005.0 216.0 C 1007.9 189.1, 1010.9 140.0, 1013.8 140.0 C 1016.8 140.0, 1019.7 189.1, 1022.7 216.0 C 1025.6 242.9, 1028.6 282.5, 1031.5 301.5 C 1034.5 320.5, 1037.4 325.3, 1040.4 330.0 C 1043.3 330.0, 1046.3 330.0, 1049.2 330.0 C 1052.2 330.0, 1055.1 330.0, 1058.1 330.0 C 1061.0 330.0, 1064.0 330.0, 1066.9 330.0 C 1069.9 330.0, 1072.8 330.0, 1075.8 330.0 C 1078.7 330.0, 1081.7 330.0, 1084.6 330.0 C 1087.6 330.0, 1090.5 330.0, 1093.5 330.0 C 1096.4 327.9, 1099.4 327.9, 1102.3 317.5 C 1105.3 307.1, 1108.2 289.7, 1111.2 267.5 C 1114.1 245.3, 1118.5 198.1, 1120.0 184.2 L 1120 330 L 660 330 Z" fill="url(#area-light)"/>
-    <path d="M 660.0 237.8 C 661.5 246.6, 665.9 276.4, 668.8 290.5 C 671.8 304.5, 674.7 315.5, 677.7 322.1 C 680.6 328.7, 683.6 328.7, 686.5 330.0 C 689.5 330.0, 692.4 330.0, 695.4 330.0 C 698.3 329.1, 701.3 328.1, 704.2 324.4 C 707.2 320.7, 710.1 312.9, 713.1 307.6 C 716.0 302.4, 719.0 294.4, 721.9 292.7 C 724.9 291.1, 727.8 299.1, 730.8 298.0 C 733.7 296.8, 736.7 291.1, 739.6 285.7 C 742.6 280.3, 745.5 266.1, 748.5 265.5 C 751.4 264.8, 754.4 278.9, 757.3 281.6 C 760.3 284.3, 763.2 284.3, 766.2 281.6 C 769.1 278.9, 772.1 263.8, 775.0 265.5 C 777.9 267.1, 780.9 282.1, 783.8 291.3 C 786.8 300.4, 789.7 313.9, 792.7 320.3 C 795.6 326.8, 798.6 328.4, 801.5 330.0 C 804.5 330.0, 807.4 330.0, 810.4 330.0 C 813.3 330.0, 816.3 330.0, 819.2 330.0 C 822.2 329.1, 825.1 328.1, 828.1 324.4 C 831.0 320.7, 834.0 312.9, 836.9 307.6 C 839.9 302.4, 842.8 292.7, 845.8 292.7 C 848.7 292.7, 851.7 302.4, 854.6 307.6 C 857.6 312.9, 860.5 320.7, 863.5 324.4 C 866.4 328.1, 869.4 329.1, 872.3 330.0 C 875.3 330.0, 878.2 330.0, 881.2 330.0 C 884.1 330.0, 887.1 330.0, 890.0 330.0 C 892.9 330.0, 895.9 330.0, 898.8 330.0 C 901.8 330.0, 904.7 330.0, 907.7 330.0 C 910.6 330.0, 913.6 330.0, 916.5 330.0 C 919.5 330.0, 922.4 330.0, 925.4 330.0 C 928.3 330.0, 931.3 330.0, 934.2 330.0 C 937.2 330.0, 940.1 330.0, 943.1 330.0 C 946.0 330.0, 949.0 330.0, 951.9 330.0 C 954.9 330.0, 957.8 330.0, 960.8 330.0 C 963.7 330.0, 966.7 330.0, 969.6 330.0 C 972.6 330.0, 975.5 330.0, 978.5 330.0 C 981.4 330.0, 984.4 330.0, 987.3 330.0 C 990.3 325.3, 993.2 320.5, 996.2 301.5 C 999.1 282.5, 1002.1 242.9, 1005.0 216.0 C 1007.9 189.1, 1010.9 140.0, 1013.8 140.0 C 1016.8 140.0, 1019.7 189.1, 1022.7 216.0 C 1025.6 242.9, 1028.6 282.5, 1031.5 301.5 C 1034.5 320.5, 1037.4 325.3, 1040.4 330.0 C 1043.3 330.0, 1046.3 330.0, 1049.2 330.0 C 1052.2 330.0, 1055.1 330.0, 1058.1 330.0 C 1061.0 330.0, 1064.0 330.0, 1066.9 330.0 C 1069.9 330.0, 1072.8 330.0, 1075.8 330.0 C 1078.7 330.0, 1081.7 330.0, 1084.6 330.0 C 1087.6 330.0, 1090.5 330.0, 1093.5 330.0 C 1096.4 327.9, 1099.4 327.9, 1102.3 317.5 C 1105.3 307.1, 1108.2 289.7, 1111.2 267.5 C 1114.1 245.3, 1118.5 198.1, 1120.0 184.2" fill="none" stroke="url(#stroke-light)" stroke-width="2" stroke-linecap="round"/>
-    <line x1="660" y1="330.5" x2="1120" y2="330.5" stroke="#E7E5E1"/>
-    <text x="660" y="352" class="axis">52 WEEKS AGO</text>
-    <text x="1120" y="352" class="axis" text-anchor="end">TODAY</text>
-    <circle cx="1120.0" cy="184.2" r="4" fill="none" stroke="#F04A10" class="ping"/>
-    <circle cx="1120.0" cy="184.2" r="4" fill="#F04A10"/>
+    <rect width="1200" height="520" fill="#FAFAF9"/>
+    <g filter="url(#blur-light)" opacity="0.3">
+      <circle cx="380" cy="420" r="210" fill="#FF5B22" class="a a1"/>
+      <circle cx="820" cy="430" r="230" fill="#FF2E7E" class="a a2"/>
+      <circle cx="610" cy="520" r="200" fill="#6A5BFF" class="a a3"/>
+    </g>
+    <rect width="1200" height="520" filter="url(#grain-light)"/>
   </g>
-  <rect x=".5" y=".5" width="1199" height="459" rx="19.5" fill="none" stroke="#E7E5E1"/>
-  <circle cx="76" cy="80" r="4" fill="#F04A10"/>
-  <text x="90" y="84" class="tag">PRODUCT ENGINEER</text>
-  <text x="66" y="210" class="name">aryan rao</text>
-  <text x="72" y="256" class="line">i ship the whole thing.</text>
-  <line x1="72" y1="340.5" x2="580" y2="340.5" stroke="#E7E5E1"/>
-  <text x="72" y="388" class="k">now</text><text x="72" y="410" class="v">rally</text><text x="262" y="388" class="k">before</text><text x="262" y="410" class="v">all nighter</text><text x="452" y="388" class="k">last ship</text><text x="452" y="410" class="v">24 oct</text>
+  <rect x=".5" y=".5" width="1199" height="519" rx="23.5" fill="none" stroke="#E7E5E1"/>
+  <rect x="499" y="96" width="202" height="34" rx="17" fill="#FAFAF9" fill-opacity=".6" stroke="#E7E5E1"/>
+  <circle cx="523" cy="113" r="4" fill="none" stroke="#1A7F37" class="ping"/>
+  <circle cx="523" cy="113" r="4" fill="#1A7F37"/>
+  <text x="537" y="117.5" class="pill">shipping rally</text>
+  <text x="600" y="252" text-anchor="middle" class="name">Aryan Rao</text>
+  <clipPath id="tc0-light"><rect x="461.5" y="300" width="278.9" height="40" class="type t0"/></clipPath>
+  <g clip-path="url(#tc0-light)" class="phrase p0"><text x="461.5" y="326" class="typed">i ship the whole thing.</text></g>
+  <clipPath id="tc1-light"><rect x="407.4" y="300" width="387.3" height="40" class="type t1"/></clipPath>
+  <g clip-path="url(#tc1-light)" class="phrase p1"><text x="407.4" y="326" class="typed">app, site, backend, launch film.</text></g>
+  <clipPath id="tc2-light"><rect x="497.7" y="300" width="206.7" height="40" class="type t2"/></clipPath>
+  <g clip-path="url(#tc2-light)" class="phrase p2"><text x="497.7" y="326" class="typed">currently: rally.</text></g>
+  <text x="600" y="462" text-anchor="middle" class="foot">PRODUCT ENGINEER  ·  IOS  ·  ANDROID  ·  WEB</text>
 </svg>
