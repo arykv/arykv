@@ -12,5 +12,5 @@
   <text x="300" y="104" class="big">9</text><text x="300" y="136" class="k">days with commits</text>
   <text x="530" y="104" class="big">3d</text><text x="530" y="136" class="k">longest streak</text>
   <rect x="802.5" y="0.5" width="397" height="199" rx="14" fill="#0E0E10" stroke="#1F1F23"/>
-  <text x="826" y="76" class="lang">TypeScript</text><text x="1170" y="76" text-anchor="end" class="k">76.3%</text><text x="826" y="106" class="lang">HTML</text><text x="1170" y="106" text-anchor="end" class="k">11.0%</text><text x="826" y="136" class="lang">JavaScript</text><text x="1170" y="136" text-anchor="end" class="k">7.6%</text><text x="826" y="166" class="lang">Python</text><text x="1170" y="166" text-anchor="end" class="k">3.4%</text>
+  <text x="826" y="76" class="lang">TypeScript</text><text x="1170" y="76" text-anchor="end" class="k">67.0%</text><text x="826" y="106" class="lang">JavaScript</text><text x="1170" y="106" text-anchor="end" class="k">14.7%</text><text x="826" y="136" class="lang">PLpgSQL</text><text x="1170" y="136" text-anchor="end" class="k">13.7%</text><text x="826" y="166" class="lang">CSS</text><text x="1170" y="166" text-anchor="end" class="k">1.9%</text>
 </svg>

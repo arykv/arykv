@@ -8,7 +8,8 @@
 //   about     two sentences
 //   stack     the tools (assets/src/icons.json)
 //   rally     project cards (Ral: assets/src/ral-court.webp,
-//   nighter     All Nighter: assets/src/allnighter.jpg)
+//   nighter     All Nighter: assets/src/allnighter.jpg,
+//   mandi       Mandi Net-Price Desk: assets/src/mandi.jpg)
 //   numbers   the last twelve months, live
 //   months    the same, month by month, live
 //   footer
@@ -270,6 +271,39 @@ async function nighterCard() {
   return projectCard(art, 'All Nighter', 'Web', 'The night before the paper, planned honestly.')
 }
 
+// A wide card for team work, so the row above stays two cards.
+async function mandiCard() {
+  const img = (await readFile('assets/src/mandi.jpg')).toString('base64')
+  const H = 380
+  const AW = 640
+  const lines = [
+    'Three AI agents rank nearby mandis by what a trader',
+    'actually clears after freight, spoilage and fees,',
+    'using live government prices and real road routes.',
+  ]
+  return svg(
+    W,
+    H,
+    'Mandi Net-Price Desk. A Fetch-A-Thon 3.0 entry: three AI agents rank nearby mandis by what a trader actually clears.',
+    `  <style>
+    ${fonts('G-400', 'G-600', 'GM-400')}
+    .t { font: 600 26px ${SANS}; letter-spacing: -0.7px; fill: ${C.ink}; }
+    .kind { font: 400 12px ${MONO}; fill: ${C.mute}; }
+    .l { font: 400 16px ${SANS}; fill: ${C.mute}; }
+    .team { font: 400 13px ${SANS}; fill: ${C.dim}; }
+  </style>
+  ${card(0, 0, W, H)}
+  <clipPath id="m"><rect x="10" y="10" width="${AW}" height="${H - 20}" rx="9"/></clipPath>
+  <filter id="mono"><feColorMatrix type="saturate" values="0"/></filter>
+  <g clip-path="url(#m)" filter="url(#mono)"><image x="10" y="10" width="${AW}" height="${H - 20}" preserveAspectRatio="xMinYMid slice" href="data:image/jpeg;base64,${img}" xlink:href="data:image/jpeg;base64,${img}"/></g>
+  <rect x="10.5" y="10.5" width="${AW - 1}" height="${H - 21}" rx="8.5" fill="none" stroke="${C.edge}"/>
+  <text x="${AW + 46}" y="86" class="kind">Fetch-A-Thon 3.0, team of four ↗</text>
+  <text x="${AW + 46}" y="130" class="t">Mandi Net-Price Desk</text>
+  ${lines.map((l, i) => `<text x="${AW + 46}" y="${180 + i * 26}" class="l">${esc(l)}</text>`).join('\n  ')}
+  <text x="${AW + 46}" y="${H - 48}" class="team">With Laksh Pradhwani, Mark Patel and Saiansh Kathuria.</text>`,
+  )
+}
+
 // ── numbers ─────────────────────────────────────────────────────────────────
 
 let longest = 0
@@ -404,6 +438,7 @@ for (const [theme, palette] of Object.entries(THEMES)) {
     stack: await stack(),
     rally: await rallyCard(),
     nighter: await nighterCard(),
+    mandi: await mandiCard(),
     numbers: numbers(),
     months: months(),
     footer: footer(),

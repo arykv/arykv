@@ -18,6 +18,8 @@
 <a href="https://playrally.app"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/rally-dark.svg"><img src="assets/rally-light.svg" alt="Rally. Ratings for the people you actually play with." width="49%"></picture></a>
 <a href="https://allnighter.in"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/nighter-dark.svg"><img src="assets/nighter-light.svg" alt="All Nighter. The night before the paper, planned honestly." width="49%"></picture></a>
 
+<a href="https://github.com/TheRealLaksh/fetchathon-3-agent"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/mandi-dark.svg"><img src="assets/mandi-light.svg" alt="Mandi Net-Price Desk. A Fetch-A-Thon 3.0 entry: three AI agents rank nearby mandis by what a trader actually clears." width="100%"></picture></a>
+
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/h-numbers-dark.svg"><img src="assets/h-numbers-light.svg" alt="This year" width="100%"></picture>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/numbers-dark.svg"><img src="assets/numbers-light.svg" alt="The last twelve months in numbers" width="100%"></picture>
