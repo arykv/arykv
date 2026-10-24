@@ -121,6 +121,7 @@ await writeFile('assets/pulse-light.svg', card(THEMES.light))
 // Latest public work, newest first, one line per repo-day.
 const evRes = await fetch(`https://api.github.com/users/${LOGIN}/events/public?per_page=100`, { headers })
 const events = evRes.ok ? await evRes.json() : []
+const mdEsc = (s) => s.replace(/[\\`*_{}[\]()#+.!<>&|-]/g, (c) => '\\' + c)
 const seen = new Set()
 const lines = []
 for (const e of events) {
@@ -131,12 +132,12 @@ for (const e of events) {
   else if (e.type === 'PullRequestEvent' && e.payload.action === 'opened') what = 'opened a pull request'
   else if (e.type === 'PullRequestEvent' && e.payload.pull_request?.merged) what = 'merged a pull request'
   else if (e.type === 'CreateEvent' && e.payload.ref_type === 'repository') what = 'started a new repo'
-  else if (e.type === 'ReleaseEvent') what = `released ${e.payload.release?.tag_name || ''}`.trim()
-  if (!what || repo === `${LOGIN}/${LOGIN}`) continue
+  else if (e.type === 'ReleaseEvent') what = `released ${mdEsc(String(e.payload.release?.tag_name || '').slice(0, 40))}`.trim()
+  if (!what || repo === `${LOGIN}/${LOGIN}` || !/^[A-Za-z0-9._-]+\/[A-Za-z0-9._-]+$/.test(repo)) continue
   const key = `${repo}|${day}|${e.type}`
   if (seen.has(key)) continue
   seen.add(key)
-  lines.push(`- \`${day}\` ${what} to [${repo.split('/')[1]}](https://github.com/${repo})`)
+  lines.push(`- \`${day}\` ${what} to [${mdEsc(repo.split('/')[1])}](https://github.com/${repo})`)
   if (lines.length === 5) break
 }
 const activity = lines.length ? lines.join('\n') : '_Most of the work lives in private repos — the graph above is the honest count._'
@@ -144,7 +145,7 @@ const activity = lines.length ? lines.join('\n') : '_Most of the work lives in p
 const readme = await readFile('README.md', 'utf8')
 const next = readme.replace(
   /<!--ACTIVITY:START-->[\s\S]*?<!--ACTIVITY:END-->/,
-  `<!--ACTIVITY:START-->\n${activity}\n<!--ACTIVITY:END-->`,
+  () => `<!--ACTIVITY:START-->\n${activity}\n<!--ACTIVITY:END-->`,
 )
 await writeFile('README.md', next)
 
