@@ -14,12 +14,13 @@
   </style>
   <rect x="0.5" y="0.5" width="593" height="439" rx="14" fill="#0E0E10" stroke="#1F1F23"/>
   <clipPath id="c"><rect x="10" y="10" width="574" height="310" rx="9"/></clipPath>
-  <g clip-path="url(#c)"><rect x="10" y="10" width="574" height="310" fill="#0A0B0D"/><line x1="10" y1="70.5" x2="584" y2="70.5" stroke="#16171A"/><line x1="10" y1="130.5" x2="584" y2="130.5" stroke="#16171A"/><line x1="10" y1="190.5" x2="584" y2="190.5" stroke="#16171A"/><line x1="10" y1="250.5" x2="584" y2="250.5" stroke="#16171A"/>
+  <filter id="mono"><feColorMatrix type="saturate" values="0"/></filter>
+  <g clip-path="url(#c)" filter="url(#mono)"><rect x="10" y="10" width="574" height="310" fill="#0A0B0D"/><line x1="10" y1="70.5" x2="584" y2="70.5" stroke="#16171A"/><line x1="10" y1="130.5" x2="584" y2="130.5" stroke="#16171A"/><line x1="10" y1="190.5" x2="584" y2="190.5" stroke="#16171A"/><line x1="10" y1="250.5" x2="584" y2="250.5" stroke="#16171A"/>
     <line x1="54.5" y1="10" x2="54.5" y2="320" stroke="#16171A"/>
     <line x1="10" y1="272.5" x2="584" y2="272.5" stroke="#2A2B2F"/>
-    <rect x="54" y="68" width="44" height="3" fill="#FF5B22"/>
+    <rect x="54" y="68" width="44" height="3" fill="#EDEDEC"/>
     <text x="50" y="172" class="word">Rally</text>
-    <rect x="217" y="155" width="14" height="14" fill="#FF5B22"/>
+    <rect x="217" y="155" width="14" height="14" fill="#EDEDEC"/>
     <text x="54" y="208" class="tag">Take your sport seriously.</text>
     <text x="54" y="300" class="url">PLAYRALLY.APP</text>
     <ellipse cx="448" cy="274" rx="76" ry="7" fill="#000" opacity=".55"/>

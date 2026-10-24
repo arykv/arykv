@@ -1,11 +1,11 @@
 // Draws every image on the profile and the board for the playable snake.
-// One system: near-black cards, hairlines, Geist (embedded, so every viewer
-// sees the same type), and Rally orange used only as contribution cells.
+// One system, black and white only: near-black cards, hairlines, greyscale
+// contribution cells, and Geist (embedded, so every viewer sees the same type).
 //
 //   assets/hero.svg        the name, written into a contribution graph
 //   assets/link-*.svg      link chips
 //   assets/h-*.svg         section headers
-//   assets/about.svg       a terminal, and Ral
+//   assets/about.svg       a terminal
 //   assets/stack.svg       the tools (assets/src/icons.json)
 //   assets/rally.svg       project cards
 //   assets/nighter.svg
@@ -56,10 +56,10 @@ const C = {
   ink: '#EDEDEC',
   mute: '#8B8B88',
   dim: '#55554F',
-  empty: '#18181B',
-  levels: ['#18181B', '#3B1A10', '#7A2E12', '#C2410C', '#FF5B22'],
-  accent: '#FF5B22',
-  live: '#3FB950',
+  empty: '#161618',
+  levels: ['#161618', '#2C2C30', '#4A4A50', '#8E8E94', '#EDEDEC'],
+  accent: '#EDEDEC',
+  live: '#EDEDEC',
 }
 const W = 1200
 const SANS = "'G', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
@@ -133,7 +133,7 @@ function hero() {
   nameGrid('ARYAN RAO').forEach((col, x) =>
     col.forEach((on, y) => {
       const v = r()
-      const fill = on ? C.levels[v < 0.22 ? 3 : 4] : v < 0.035 ? C.levels[1] : C.empty
+      const fill = on ? C.levels[4] : v < 0.035 ? C.levels[1] : C.empty
       const anim = on ? ` class="on" style="animation-delay:${x * 22 + y * 8}ms"` : ''
       cells.push(`<rect x="${X0 + x * (CELL + GAP)}" y="${Y0 + y * (CELL + GAP)}" width="${CELL}" height="${CELL}" rx="3.5" fill="${fill}"${anim}/>`)
     }),
@@ -207,16 +207,14 @@ function header(n, title, hint) {
 // ── about: a terminal, and Ral ──────────────────────────────────────────────
 
 async function about() {
-  const H = 400
-  const ral = (await readFile('assets/src/ral-wave.webp')).toString('base64')
+  const H = 340
   const lines = [
     ['p', 'cat about.txt'],
-    ['i', "I'm Aryan. I build products end to end —"],
-    ['i', 'the app, the site, the backend, the store'],
-    ['i', 'listing, and the film that launches it.'],
+    ['i', "I'm Aryan. I build products end to end — the app, the site, the backend,"],
+    ['i', 'the store listing, and the film that launches it.'],
     ['b', ''],
-    ['m', 'Right now that is Rally: score a match, your'],
-    ['m', 'opponent confirms it, one rating per sport moves.'],
+    ['m', 'Right now that is Rally: score a match, your opponent confirms it,'],
+    ['m', 'one rating per sport moves.'],
     ['b', ''],
     ['c', '# usually shipping. occasionally sleeping.'],
   ]
@@ -225,7 +223,7 @@ async function about() {
     .map(([k, s]) => {
       const out =
         k === 'p'
-          ? `<text x="32" y="${y}" class="mono"><tspan fill="${C.accent}">aryan@arykv</tspan><tspan fill="${C.dim}">:~$ </tspan>${esc(s)}</text>`
+          ? `<text x="32" y="${y}" class="mono"><tspan fill="${C.mute}">aryan@arykv</tspan><tspan fill="${C.dim}">:~$ </tspan>${esc(s)}</text>`
           : k === 'b'
             ? ''
             : `<text x="32" y="${y}" class="mono ${k}">${esc(s)}</text>`
@@ -234,36 +232,24 @@ async function about() {
     })
     .join('\n  ')
   const promptY = y + 10
-  const court = [0, 1, 2, 3, 4].map((i) => `<line x1="792" y1="${70.5 + i * 56}" x2="${W}" y2="${70.5 + i * 56}" stroke="${C.rule}"/>`).join('')
   return svg(
     W,
     H,
-    "About Aryan: builds products end to end; currently Rally. With Ral, Rally's mascot, waving.",
+    'About Aryan: builds products end to end; currently Rally.',
     `  <style>
-    ${fonts('GM-400', 'GM-500')}
+    ${fonts('GM-400')}
     .mono { font: 400 15px ${MONO}; fill: ${C.ink}; }
     .m { fill: ${C.mute}; } .c { fill: ${C.dim}; }
     .bar { font: 400 12px ${MONO}; fill: ${C.dim}; }
-    .cap { font: 400 11px ${MONO}; letter-spacing: 1.2px; fill: ${C.dim}; }
-    .bob { transform-box: fill-box; transform-origin: bottom; animation: bob 2.8s ease-in-out infinite; } @keyframes bob { 50% { transform: translateY(-6px) } }
     ${PING}
-    @media (prefers-reduced-motion: reduce) { .bob { animation: none } }
   </style>
-  ${card(0, 0, 772, H)}
-  <line x1="1" y1="44.5" x2="771" y2="44.5" stroke="${C.edge}"/>
+  ${card(0, 0, W, H)}
+  <line x1="1" y1="44.5" x2="${W - 1}" y2="44.5" stroke="${C.edge}"/>
   <circle cx="26" cy="22" r="5" fill="#2A2A2E"/><circle cx="44" cy="22" r="5" fill="#2A2A2E"/><circle cx="62" cy="22" r="5" fill="#2A2A2E"/>
-  <text x="386" y="26" text-anchor="middle" class="bar">aryan@arykv — zsh</text>
+  <text x="${W / 2}" y="26" text-anchor="middle" class="bar">aryan@arykv — zsh</text>
   ${body}
-  <text x="32" y="${promptY}" class="mono"><tspan fill="${C.accent}">aryan@arykv</tspan><tspan fill="${C.dim}">:~$</tspan></text>
-  <rect x="${32 + 15 * 0.6 * 15 + 4}" y="${promptY - 14}" width="9" height="18" fill="${C.ink}" class="blink"/>
-  <clipPath id="art"><rect x="792" y="0" width="408" height="${H}" rx="14"/></clipPath>
-  ${card(792, 0, 408, H)}
-  <g clip-path="url(#art)">${court}<line x1="996.5" y1="0" x2="996.5" y2="326" stroke="${C.rule}"/></g>
-  <line x1="793" y1="326.5" x2="${W - 1}" y2="326.5" stroke="${C.edge}"/>
-  <ellipse cx="996" cy="328" rx="74" ry="7" fill="#000" opacity=".6"/>
-  <image class="bob" x="866" y="74" width="260" height="256" href="data:image/webp;base64,${ral}" xlink:href="data:image/webp;base64,${ral}"/>
-  <text x="816" y="368" class="cap">RAL · RALLY'S MASCOT</text>
-  <text x="${W - 24}" y="368" text-anchor="end" class="cap">SAYS HI</text>`,
+  <text x="32" y="${promptY}" class="mono"><tspan fill="${C.mute}">aryan@arykv</tspan><tspan fill="${C.dim}">:~$</tspan></text>
+  <rect x="${32 + 15 * 0.6 * 15 + 4}" y="${promptY - 14}" width="9" height="18" fill="${C.ink}" class="blink"/>`,
   )
 }
 
@@ -309,7 +295,8 @@ function projectCard(art, title, kind, line, label) {
   </style>
   ${card(0, 0, CW, H)}
   <clipPath id="c"><rect x="10" y="10" width="${CW - 20}" height="310" rx="9"/></clipPath>
-  <g clip-path="url(#c)">${art}</g>
+  <filter id="mono"><feColorMatrix type="saturate" values="0"/></filter>
+  <g clip-path="url(#c)" filter="url(#mono)">${art}</g>
   <rect x="10.5" y="10.5" width="${CW - 21}" height="309" rx="8.5" fill="none" stroke="${C.edge}"/>
   <text x="26" y="370" class="t">${esc(title)}</text>
   <text x="${CW - 26}" y="368" text-anchor="end" class="kind">${esc(kind)}  ↗</text>
